@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://meneketehe.github.io/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="noise"></div>
@@ -86,62 +86,266 @@
         </div>
       </div>
     </section>
+    
+<section class="section team" id="team">
 
-    <section class="section team" id="team">
-      <div class="section-head">
+  <div class="section-head">
+    <div>
+      <div class="section-label">02 / THE TEAM</div>
+      <h2>Meet the <span>builders.</span></h2>
+    </div>
+
+    <p>
+      Empat individu dengan latar belakang dan kemampuan berbeda
+      yang bekerja bersama untuk menciptakan sesuatu yang lebih besar.
+    </p>
+  </div>
+
+  <!-- FOTO KELOMPOK -->
+  <div class="group-showcase reveal">
+
+    <div class="group-image">
+      <!-- Ganti dengan foto kelompok -->
+      <img src="kelompok.jpeg" alt="Foto Kelompok 14">
+
+      <div class="image-overlay"></div>
+
+      <div class="group-badge">
+        <span>GROUP</span>
+        <strong>14</strong>
+      </div>
+
+      <div class="group-caption">
+        <span>STUDENT TECH COLLECTIVE</span>
+        <h3>One team.<br>Infinite possibilities.</h3>
+      </div>
+    </div>
+
+    <div class="group-info">
+      <span class="mini-title">OUR CREW</span>
+
+      <h3>
+        Built by students,
+        <span>driven by curiosity.</span>
+      </h3>
+
+      <p>
+        Kami percaya bahwa setiap anggota memiliki perspektif,
+        kemampuan, dan cara berpikir yang berbeda. Perbedaan tersebut
+        menjadi kekuatan ketika disatukan dalam satu tujuan.
+      </p>
+
+      <div class="group-meta">
         <div>
-          <div class="section-label">02 / THE TEAM</div>
-          <h2>Meet the <span>builders.</span></h2>
+          <strong>04</strong>
+          <span>Members</span>
         </div>
-        <p>Ganti data placeholder di HTML dengan identitas anggota kelompok kalian.</p>
+
+        <div>
+          <strong>2026</strong>
+          <span>Founded</span>
+        </div>
+
+        <div>
+          <strong>∞</strong>
+          <span>Ideas</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- MEMBER GRID -->
+  <div class="members-wrapper">
+
+    <div class="members-title">
+      <div>
+        <span class="mini-title">THE PEOPLE</span>
+        <h3>Meet our members.</h3>
       </div>
 
-      <div class="team-grid">
-        <article class="member-card reveal" data-name="Rifat Abdul Manaf" data-role="Cyber Security" data-bio="Interested in cybersecurity, security research, networking and digital technology." data-skills="Cyber Security,Networking,Linux,Security Research">
-          <div class="member-number">01</div>
-          <div class="avatar">RA</div>
-          <div class="member-info">
-            <p>CYBER SECURITY</p>
-            <h3>Rifat Abdul Manaf</h3>
-            <span>Informatics Student</span>
-          </div>
-          <button class="arrow" aria-label="Lihat profil">↗</button>
-        </article>
+      <span class="members-count">04 / 04</span>
+    </div>
 
-        <article class="member-card reveal" data-name="Nama Anggota 02" data-role="Frontend Developer" data-bio="Suka membangun antarmuka web yang modern, cepat, dan mudah digunakan." data-skills="HTML,CSS,JavaScript,UI Design">
-          <div class="member-number">02</div>
-          <div class="avatar">02</div>
-          <div class="member-info">
-            <p>FRONTEND DEVELOPER</p>
-            <h3>Nama Anggota 02</h3>
-            <span>Informatics Student</span>
-          </div>
-          <button class="arrow" aria-label="Lihat profil">↗</button>
-        </article>
 
-        <article class="member-card reveal" data-name="Nama Anggota 03" data-role="UI/UX Designer" data-bio="Fokus pada desain visual, pengalaman pengguna, dan bagaimana membuat produk terasa sederhana." data-skills="UI/UX,Figma,Branding,Research">
-          <div class="member-number">03</div>
-          <div class="avatar">03</div>
-          <div class="member-info">
-            <p>UI/UX DESIGNER</p>
-            <h3>Nama Anggota 03</h3>
-            <span>Informatics Student</span>
-          </div>
-          <button class="arrow" aria-label="Lihat profil">↗</button>
-        </article>
+    <div class="team-grid">
 
-        <article class="member-card reveal" data-name="Nama Anggota 04" data-role="Backend Developer" data-bio="Senang mengolah logika aplikasi, database, dan sistem yang menjadi fondasi sebuah produk." data-skills="Python,Database,API,Problem Solving">
-          <div class="member-number">04</div>
-          <div class="avatar">04</div>
-          <div class="member-info">
-            <p>BACKEND DEVELOPER</p>
-            <h3>Nama Anggota 04</h3>
-            <span>Informatics Student</span>
+      <!-- MEMBER 01 -->
+      <article
+        class="member-card reveal"
+        data-name="Rifat Abdul Manaf"
+        data-role="Cyber Security"
+        data-bio="Interested in cybersecurity, security research, networking and digital technology."
+        data-skills="Cyber Security,Networking,Linux,Security Research"
+      >
+
+        <div class="member-photo-wrap">
+          <!-- Ganti dengan foto anggota -->
+          <img
+            src="foto-rifat.jpg"
+            alt="Rifat Abdul Manaf"
+            class="member-photo"
+          >
+
+          <span class="member-number">01</span>
+
+          <div class="photo-gradient"></div>
+
+          <button class="arrow" aria-label="Lihat profil">
+            ↗
+          </button>
+        </div>
+
+        <div class="member-info">
+          <span class="member-role">CYBER SECURITY</span>
+
+          <h3>Rifat Abdul Manaf</h3>
+
+          <p>Informatics Student</p>
+
+          <div class="member-nim">
+            <span>NIM</span>
+            <strong>ISI NIM</strong>
           </div>
-          <button class="arrow" aria-label="Lihat profil">↗</button>
-        </article>
-      </div>
-    </section>
+        </div>
+
+      </article>
+
+
+      <!-- MEMBER 02 -->
+      <article
+        class="member-card reveal"
+        data-name="Nama Anggota 02"
+        data-role="Frontend Developer"
+        data-bio="Suka membangun antarmuka web yang modern, cepat, dan mudah digunakan."
+        data-skills="HTML,CSS,JavaScript,UI Design"
+      >
+
+        <div class="member-photo-wrap">
+
+          <img
+            src="foto-anggota2.jpg"
+            alt="Nama Anggota 02"
+            class="member-photo"
+          >
+
+          <span class="member-number">02</span>
+
+          <div class="photo-gradient"></div>
+
+          <button class="arrow" aria-label="Lihat profil">
+            ↗
+          </button>
+
+        </div>
+
+        <div class="member-info">
+          <span class="member-role">FRONTEND DEVELOPER</span>
+
+          <h3>Nama Anggota 02</h3>
+
+          <p>Informatics Student</p>
+
+          <div class="member-nim">
+            <span>NIM</span>
+            <strong>ISI NIM</strong>
+          </div>
+        </div>
+
+      </article>
+
+
+      <!-- MEMBER 03 -->
+      <article
+        class="member-card reveal"
+        data-name="Nama Anggota 03"
+        data-role="UI/UX Designer"
+        data-bio="Fokus pada desain visual, pengalaman pengguna, dan bagaimana membuat produk terasa sederhana."
+        data-skills="UI/UX,Figma,Branding,Research"
+      >
+
+        <div class="member-photo-wrap">
+
+          <img
+            src="foto-anggota3.jpg"
+            alt="Nama Anggota 03"
+            class="member-photo"
+          >
+
+          <span class="member-number">03</span>
+
+          <div class="photo-gradient"></div>
+
+          <button class="arrow" aria-label="Lihat profil">
+            ↗
+          </button>
+
+        </div>
+
+        <div class="member-info">
+          <span class="member-role">UI/UX DESIGNER</span>
+
+          <h3>Nama Anggota 03</h3>
+
+          <p>Informatics Student</p>
+
+          <div class="member-nim">
+            <span>NIM</span>
+            <strong>ISI NIM</strong>
+          </div>
+        </div>
+
+      </article>
+
+
+      <!-- MEMBER 04 -->
+      <article
+        class="member-card reveal"
+        data-name="Nama Anggota 04"
+        data-role="Backend Developer"
+        data-bio="Senang mengolah logika aplikasi, database, dan sistem yang menjadi fondasi sebuah produk."
+        data-skills="Python,Database,API,Problem Solving"
+      >
+
+        <div class="member-photo-wrap">
+
+          <img
+            src="foto-anggota4.jpg"
+            alt="Nama Anggota 04"
+            class="member-photo"
+          >
+
+          <span class="member-number">04</span>
+
+          <div class="photo-gradient"></div>
+
+          <button class="arrow" aria-label="Lihat profil">
+            ↗
+          </button>
+
+        </div>
+
+        <div class="member-info">
+          <span class="member-role">BACKEND DEVELOPER</span>
+
+          <h3>Nama Anggota 04</h3>
+
+          <p>Informatics Student</p>
+
+          <div class="member-nim">
+            <span>NIM</span>
+            <strong>ISI NIM</strong>
+          </div>
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+
+</section>
+
 
     <section class="section values">
       <div class="section-label">03 / OUR VALUES</div>
@@ -163,14 +367,46 @@
       </div>
     </section>
 
-    <section class="cta reveal" id="contact">
-      <div>
-        <p class="eyebrow">LET'S BUILD SOMETHING GREAT</p>
-        <h2>Ideas become real<br><span>when we build together.</span></h2>
-      </div>
-      <a class="btn primary" href="mailto:yourgroup@email.com">Get in touch ↗</a>
-    </section>
-  </main>
+<section class="comments-section reveal" id="contact">
+    <div class="comments-header">
+        <p class="eyebrow">05 / YOUR THOUGHTS</p>
+        <h2>Tinggalkan <span>Pesan & Kesan</span></h2>
+        <p>
+            Bagikan pesan, kesan, atau apresiasi kamu untuk kelompok kami.
+        </p>
+    </div>
+
+    <form class="comment-form" id="commentForm">
+        <div class="input-group">
+            <label for="nama">Nama</label>
+            <input 
+                type="text" 
+                id="nama" 
+                placeholder="Nama Anda" 
+                required
+            >
+        </div>
+
+        <div class="input-group">
+            <label for="pesan">Pesan & Kesan</label>
+            <textarea 
+                id="pesan" 
+                rows="5" 
+                placeholder="Tulis pesan atau kesan..."
+                required
+            ></textarea>
+        </div>
+
+        <button type="submit" class="comment-btn">
+            Kirim Pesan
+            <span>↗</span>
+        </button>
+    </form>
+
+    <div class="comment-list" id="commentList">
+        <!-- Komentar akan muncul melalui JavaScript -->
+    </div>
+</section>
 
   <footer>
     <span>© 2026 Kelompok 14</span>
@@ -189,6 +425,6 @@
     </div>
   </div>
 
-  <script src="https://meneketehe.github.io/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
