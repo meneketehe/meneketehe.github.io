@@ -878,35 +878,50 @@
         </p>
     </div>
 
-    <form class="comment-form" id="commentForm">
-        <div class="input-group">
-            <label for="nama">Nama</label>
-            <input 
-                type="text" 
-                id="nama" 
-                placeholder="Nama Anda" 
-                required
-            >
+    <!-- Layout form dan komentar bersebelahan -->
+    <div class="comment-layout">
+        
+        <!-- Bagian Form (Kiri) -->
+        <form class="comment-form" id="commentForm">
+            <div class="input-group">
+                <label for="nama">Nama</label>
+                <input 
+                    type="text" 
+                    id="nama" 
+                    placeholder="Nama Anda" 
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="pesan">Pesan & Kesan</label>
+                <textarea 
+                    id="pesan" 
+                    rows="5" 
+                    placeholder="Tulis pesan atau kesan..."
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" class="comment-btn">
+                Kirim Pesan
+                <span>↗</span>
+            </button>
+        </form>
+
+        <!-- Bagian Menampilkan Komentar (Kanan) -->
+        <div class="comments-display">
+            <div class="comments-display-head">
+                <span>PESAN TERBARU</span>
+                <span><span id="commentCount">0</span> Pesan</span>
+            </div>
+            
+            <!-- Di sinilah efek max-height dan custom scrollbar dari CSS akan diterapkan -->
+            <div class="comment-list" id="commentList">
+                <!-- Komentar akan muncul melalui JavaScript di sini -->
+            </div>
         </div>
 
-        <div class="input-group">
-            <label for="pesan">Pesan & Kesan</label>
-            <textarea 
-                id="pesan" 
-                rows="5" 
-                placeholder="Tulis pesan atau kesan..."
-                required
-            ></textarea>
-        </div>
-
-        <button type="submit" class="comment-btn">
-            Kirim Pesan
-            <span>↗</span>
-        </button>
-    </form>
-
-    <div class="comment-list" id="commentList">
-        <!-- Komentar akan muncul melalui JavaScript -->
     </div>
 </section>
 
