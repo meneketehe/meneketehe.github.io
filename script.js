@@ -296,33 +296,27 @@ document.addEventListener(
 const commentForm =
   $("#commentForm");
 
+// PERBAIKAN: Ubah commentsContainer agar sesuai dengan ID di index.html
 const commentsContainer =
-  $("#commentsContainer");
+  $("#commentList");
 
 const commentCount =
   $("#commentCount");
-
 
 // Key LocalStorage
 const COMMENT_STORAGE =
   "group31-comments";
 
-
 // Escape HTML
 function escapeHTML(text) {
-
   const div =
     document.createElement("div");
-
   div.textContent = text;
-
   return div.innerHTML;
 }
 
-
 // Format waktu
 function formatTime(date) {
-
   return new Date(date).toLocaleString(
     "id-ID",
     {
@@ -332,44 +326,33 @@ function formatTime(date) {
   );
 }
 
-
 // =====================================================
 // LOAD COMMENTS
 // =====================================================
 
 function loadComments() {
-
   if (!commentsContainer) return;
 
-
   let comments = [];
-
   try {
-
     comments =
       JSON.parse(
         localStorage.getItem(
           COMMENT_STORAGE
         )
       ) || [];
-
   } catch (error) {
-
     comments = [];
-
   }
 
-
-  // Update jumlah komentar
+  // Update jumlah komentar (Jika elemen ada)
   if (commentCount) {
     commentCount.textContent =
       comments.length;
   }
 
-
   // Belum ada komentar
   if (comments.length === 0) {
-
     commentsContainer.innerHTML = `
       <div class="empty-comments">
         <span>✦</span>
@@ -379,130 +362,95 @@ function loadComments() {
         </small>
       </div>
     `;
-
     return;
   }
-
 
   // Bersihkan container
   commentsContainer.innerHTML = "";
 
-
   // Tampilkan komentar
   comments.forEach((comment) => {
-
     const commentItem =
       document.createElement("div");
-
     commentItem.className =
       "comment-item";
-
 
     const name =
       escapeHTML(comment.nama);
 
-
     const message =
       escapeHTML(comment.pesan);
-
 
     const time =
       comment.waktu
         ? formatTime(comment.waktu)
         : "";
 
-
     commentItem.innerHTML = `
       <strong>${name}</strong>
-
       <p>${message}</p>
-
-      ${
-        time
-          ? `<small>${time}</small>`
-          : ""
+      ${time
+        ? `<small>${time}</small>`
+        : ""
       }
     `;
-
 
     commentsContainer.appendChild(
       commentItem
     );
-
   });
-
 }
-
 
 // =====================================================
 // SUBMIT COMMENT
 // =====================================================
 
 if (commentForm) {
-
   commentForm.addEventListener(
     "submit",
     (event) => {
-
       event.preventDefault();
 
-
+      // PERBAIKAN: Ubah selector untuk nama dan pesan agar sesuai dengan ID di index.html
       const nameInput =
-        $("#commentName");
-
+        $("#nama");
 
       const textInput =
-        $("#commentText");
-
+        $("#pesan");
 
       if (!nameInput || !textInput) {
         return;
       }
 
-
       const nama =
         nameInput.value.trim();
 
-
       const pesan =
         textInput.value.trim();
-
 
       // Validasi
       if (!nama || !pesan) {
         return;
       }
 
-
       let comments = [];
-
       try {
-
         comments =
           JSON.parse(
             localStorage.getItem(
               COMMENT_STORAGE
             )
           ) || [];
-
       } catch (error) {
-
         comments = [];
-
       }
-
 
       // Tambahkan komentar terbaru
       comments.unshift({
-
         nama: nama,
-
         pesan: pesan,
-
         waktu: new Date().toISOString()
-
       });
-
 
       // Simpan
       localStorage.setItem(
@@ -510,19 +458,14 @@ if (commentForm) {
         JSON.stringify(comments)
       );
 
-
       // Reset form
       commentForm.reset();
 
-
       // Refresh komentar
       loadComments();
-
     }
   );
-
 }
-
 
 // =====================================================
 // INITIAL LOAD
