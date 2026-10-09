@@ -2471,6 +2471,11 @@ body.dark .comment-list::-webkit-scrollbar-track {
 
 @media(max-width:768px){
 
+.slide-control{
+
+    display:none;
+
+}  
 
 .menu-btn{
 
