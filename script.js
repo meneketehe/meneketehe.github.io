@@ -155,6 +155,139 @@ counters.forEach((counter) => {
 // PROFILE MODAL
 // =====================================================
 
+const modal = $("#profileModal");
+const modalName = $("#modalName");
+const modalRole = $("#modalRole");
+const modalBio = $("#modalBio");
+const modalSkills = $("#modalSkills");
+const modalAvatar = $("#modalAvatar");
+const closeModalButton = $("#closeModal");
+const modalBackdrop = $(".modal-backdrop");
+
+
+function openProfile(card) {
+
+  const name = card.dataset.name || "Unknown";
+  const role = card.dataset.role || "Member";
+  const bio = card.dataset.bio || "";
+  const skills = card.dataset.skills || "";
+
+
+  // Nama
+  modalName.textContent = name;
+
+
+  // Role
+  modalRole.textContent =
+    role.toUpperCase();
+
+
+  // Bio
+  modalBio.textContent = bio;
+
+
+  // Bersihkan skill lama
+  modalSkills.innerHTML = "";
+
+
+  // Tambahkan skill
+  skills
+    .split(",")
+    .filter(Boolean)
+    .forEach((skill) => {
+
+      const span =
+        document.createElement("span");
+
+      span.textContent =
+        skill.trim();
+
+      modalSkills.appendChild(span);
+    });
+
+
+  // Inisial nama
+  const initials = name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+
+  modalAvatar.textContent =
+    initials || "??";
+
+
+  // Buka modal
+  modal.classList.add("open");
+
+  modal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.style.overflow = "hidden";
+}
+
+
+function closeProfile() {
+
+  modal.classList.remove("open");
+
+  modal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.style.overflow = "";
+}
+
+
+// Klik kartu anggota
+$$(".member-card").forEach((card) => {
+
+  card.addEventListener("click", (event) => {
+
+    // Kalau yang diklik adalah tombol arrow,
+    // tetap buka modal.
+    openProfile(card);
+
+  });
+
+});
+
+
+// Tombol close
+if (closeModalButton) {
+  closeModalButton.addEventListener(
+    "click",
+    closeProfile
+  );
+}
+
+
+// Klik background modal
+if (modalBackdrop) {
+  modalBackdrop.addEventListener(
+    "click",
+    closeProfile
+  );
+}
+
+
+// Tombol ESC
+document.addEventListener(
+  "keydown",
+  (event) => {
+
+    if (event.key === "Escape") {
+      closeProfile();
+    }
+
+  }
+);
+
 
 // =====================================================
 // PESAN & KESAN
@@ -334,9 +467,68 @@ if (commentForm) {
   );
 }
 
-
 // =====================================================
 // INITIAL LOAD
 // =====================================================
 
 loadComments();
+
+// ================================
+// GROUP PHOTO SLIDER
+// ================================
+
+const photos = [
+  "kelompok.jpeg",
+  "kelompok2.jpeg",
+  "kelompok3.jpeg"
+];
+
+
+let currentPhoto = 0;
+
+
+const groupPhoto = $("#groupPhoto");
+const nextPhoto = $("#nextPhoto");
+const prevPhoto = $("#prevPhoto");
+
+
+function changePhoto(index){
+
+ currentPhoto = index;
+
+ if(currentPhoto >= photos.length){
+   currentPhoto = 0;
+ }
+
+ if(currentPhoto < 0){
+   currentPhoto = photos.length - 1;
+ }
+
+
+ groupPhoto.src = photos[currentPhoto];
+
+}
+
+
+
+if(nextPhoto){
+
+ nextPhoto.addEventListener(
+ "click",
+ ()=>{
+   changePhoto(currentPhoto + 1);
+ });
+
+}
+
+
+
+if(prevPhoto){
+
+ prevPhoto.addEventListener(
+ "click",
+ ()=>{
+   changePhoto(currentPhoto - 1);
+ });
+
+}
