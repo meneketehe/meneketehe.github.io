@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-   <link rel="icon" type="image/svg+xml" href="/jabar.jpg" />
+  <link rel="icon" type="image/svg+xml" href="/jabar.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Modern Tech Startup — Profil kelompok mahasiswa">
   <title>Kelompok 14</title>
@@ -14,61 +14,52 @@
 <body>
   <div class="noise"></div>
 
-<header class="navbar">
+  <header class="navbar">
+    <a href="#home" class="brand">
+      <span class="brand-mark">14</span>
+      <span>Kelompok<span class="accent"> 14</span></span>
+    </a>
+    <nav id="navMenu">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#team">Team</a>
+      <a href="#comment">Comment</a>
+      
 
-  <a href="#home" class="brand">
-    <span class="brand-mark">14</span>
-    <span>
-      Kelompok<span class="accent"> 14</span>
-    </span>
-  </a>
+    </nav>
 
+    <div class="nav-action">
 
-  <nav id="navMenu">
-    <a href="#about">About</a>
-    <a href="#team">Team</a>
-    <a href="#pesan">Pesan</a>
-    <a href="#commentList">Komentar</a>
-  </nav>
-
-
-  <div class="nav-actions">
-
-    <button 
+      <button 
       class="theme-btn" 
-      id="themeToggle">
+      id="themeToggle" 
+      aria-label="Ganti tema">
       ◐
-    </button>
+      </button>
+  
+      <button 
+      class="menu-btn" 
+      id="menuBtn">
+      ☰
+      </button>
 
+    </div>
 
-    <button 
-      class="hamburger"
-      id="hamburger">
-
-      <span></span>
-      <span></span>
-      <span></span>
-
-    </button>
-
-  </div>
-
-
-</header>
+  </header>
 
   <main>
     <section class="hero" id="home">
       <div class="hero-grid"></div>
       <div class="hero-copy reveal">
         <p class="eyebrow"><span class="pulse"></span> KELOMPOK 14</p>
-        <h1>Welcome<br><span>to our Website</span></h1>
+        <h1>Selamat Datang<br><span>di Website kami</span></h1>
         <p class="hero-text">
           Kami Kelompok 14 yaitu sebuah kelompok mahasiswa yang belajar, berkolaborasi,
           dan menciptakan solusi digital untuk masa depan.
         </p>
         <div class="hero-actions">
-          <a class="btn primary" href="#team">Meet the team <span>↗</span></a>
-          <a class="btn secondary" href="#about">Explore us</a>
+          <a class="btn primary" href="#team">Meet our team <span>↗</span></a>
+          <a class="btn secondary" href="#about">Discover us</a>
         </div>
       </div>
 
@@ -79,35 +70,34 @@
           <span>14</span>
           <small>2026</small>
         </div>
-        <div class="floating-chip chip-one">INNOVATE</div>
-        <div class="floating-chip chip-two">CREATE</div>
-        <div class="floating-chip chip-three">GROW</div>
+        
       </div>
     </section>
 
     <section class="stats reveal">
-      <div><strong class="counter" data-target="11">0</strong><span>Members</span></div>
-      <div><strong class="counter" data-target="1">0</strong><span>Shared Vision</span></div>
-      <div><strong class="counter" data-target="2026">0</strong><span>Started</span></div>
-      <div><strong>∞</strong><span>Possibilities</span></div>
+      <div><strong class="counter" data-target="11">0</strong><span>11 Members</span></div>
+      <div><strong class="counter" data-target="2">0</strong><span>2 Mentors</span></div>
+      <div><strong class="counter" data-target="2026">0</strong><span>2026 Founded</span></div>
+      <div><strong>∞</strong><span>1 Vision</span></div>
     </section>
 
     <section class="section about" id="about">
-      <div class="section-label">ABOUT US</div>
+      <div class="section-label">01 /ABOUT US</div>
       <div class="about-content">
         <div>
           <p class="mini-title">SIAPA KAMI?</p>
-          <h2>Different minds.<br><span>One direction.</span></h2>
+          <h2>One team.<br><span>One journey.</span></h2>
         </div>
         <div class="about-text">
           <p>
-            Kami adalah kelompok mahasiswa yang percaya bahwa ide sederhana
-            dapat berkembang menjadi sesuatu yang berdampak ketika dikerjakan
-            bersama.
+            Kami adalah Kelompok 14, mahasiswa Informatika
+            yang berkembang melalui kolaborasi, mentoring,
+            dan pengalaman bersama.
           </p>
           <p>
-            Website ini menjadi identitas digital kami — tempat untuk mengenal
-            setiap anggota, perjalanan, kemampuan, dan visi kelompok.
+            Website ini menjadi ruang digital untuk mengenalkan
+            anggota, perjalanan belajar, serta dokumentasi aktivitas
+            kelompok kami.
           </p>
           <div class="tag-row">
             <span>Technology</span><span>Collaboration</span><span>Innovation</span><span>Growth</span>
@@ -121,52 +111,57 @@
   <div class="section-head">
     <div>
       <div class="section-label">02 / THE TEAM</div>
-      <h2>Meet the <span>builders.</span></h2>
+      <h2>Meet our <span>team.</span></h2>
     </div>
-
-    <p>
-      Empat individu dengan latar belakang dan kemampuan berbeda
-      yang bekerja bersama untuk menciptakan sesuatu yang lebih besar.
-    </p>
   </div>
 
   <!-- FOTO KELOMPOK -->
   <div class="group-showcase reveal">
 
-<div class="group-image">
-
-<div class="slider">
-
-<img id="groupPhoto" 
-src="kelompok.jpeg" 
-alt="Foto Kelompok 14">
-
-<button class="slide-btn prev" id="prevPhoto">
-←
-</button>
-
-<button class="slide-btn next" id="nextPhoto">
-→
-</button>
-
-</div>
+    <div class="group-slider">
 
 
-<div class="image-overlay"></div>
+    <img 
+    id="groupPhoto"
+    src="img/mentoring/day1.jpeg"
+    >
 
-<div class="group-badge">
-<span>GROUP</span>
-<strong>14</strong>
-</div>
+    <div id="comingSoon" class="coming-soon">
+      COMING SOON
+    </div>
+
+    <div class="day-label">
+
+      <span class="status-dot"></span>
+
+      <span id="dayLabel">
+          DAY 01
+      </span>
 
 
-<div class="group-caption">
-<span>STUDENT TECH COLLECTIVE</span>
-<h3>
-One team.<br>
-Infinite possibilities.
-</h3>
-</div>
+    </div>
+
+
+    <div class="slide-control">
+
+
+        <button id="prevPhoto">
+            ←
+        </button>
+
+
+        <span id="photoCount">
+            1 / 4
+        </span>
+
+
+        <button id="nextPhoto">
+            →
+        </button>
+
+
+    </div>
+
 
 </div>
 
@@ -174,8 +169,8 @@ Infinite possibilities.
       <span class="mini-title">OUR CREW</span>
 
       <h3>
-        Built by students,
-        <span>driven by curiosity.</span>
+        One team, <br>
+        <span>One shared journey.</span>
       </h3>
 
       <p>
@@ -239,14 +234,6 @@ Infinite possibilities.
 
       <div class="photo-gradient"></div>
 
-      <button
-        class="arrow"
-        aria-label="Lihat profil"
-        type="button"
-      >
-        ↗
-      </button>
-
     </div>
 
     <div class="member-info">
@@ -302,14 +289,6 @@ Infinite possibilities.
 
       <div class="photo-gradient"></div>
 
-      <button
-        class="arrow"
-        aria-label="Lihat profil"
-        type="button"
-      >
-        ↗
-      </button>
-
     </div>
 
     <div class="member-info">
@@ -354,7 +333,7 @@ Infinite possibilities.
         <h3>OUR MEMBER</h3>
       </div>
 
-      <span class="members-count">04 / 04</span>
+      <span class="members-count">11 / 11</span>
     </div>
 
 
@@ -362,118 +341,9 @@ Infinite possibilities.
 
       <!-- MEMBER 01 -->
       <article
-        class="member-card reveal"
-        data-name="Rifat Abdul Manaf"
-        data-role="Cyber Security"
-        data-bio="Interested in cybersecurity, security research, networking and digital technology."
-        data-skills="Cyber Security,Networking,Linux,Security Research"
-      >
-
-        <div class="member-photo-wrap">
-          <!-- Ganti dengan foto anggota -->
-          <img
-            src="img/aing.png"
-            alt="Rifat Abdul Manaf"
-            class="member-photo"
-          >
-
-          <span class="member-number">01</span>
-
-          <div class="photo-gradient"></div>
-
-          <button class="arrow" aria-label="Lihat profil">
-            ↗
-          </button>
-        </div>
-
-        <div class="member-info">
-          <span class="member-role">BUG HUNTER</span>
-
-          <h3>Rifat Abdul Manaf</h3>
-
-          <p>Informatics Student</p>
-
-          <div class="member-nim">
-            <span>NIM</span>
-            <strong>267006111199</strong>
-          </div>
-          <br>
-          <div class="instagram">
-              <img src="Instagram_logo_2022.svg.webp" alt="" width="20px"">
-              <a href="https://instagram.com/p1sc00k_" target="_blank">p1sc00k_</a>
-          </div>
-          
-        </div>
-        <style>
-          .instagram {
-              display: flex;
-
-             justify-content: space-between;
-
-             align-items: center;
-          }
-          .instagram a{
-              font-size: 10px;
-              color: var(--text-soft);
-          }
-        </style>
-      </article>
-
-
-      <!-- MEMBER 02 -->
-      <article
-        class="member-card reveal"
-        data-name="Adil Khoerussabil"
-        data-role="AI Developer"
-        data-bio="Fokus pada pengembangan dan penerapan teknologi kecerdasan buatan (AI) untuk memecahkan masalah dan meningkatkan efisiensi."
-        data-skills="Machine Learning,Deep Learning,Python,Data Analysis"
-      >
-
-        <div class="member-photo-wrap">
-
-          <img
-            src="img/Adil.jpg"
-            alt="Adil Khoerussabil"
-            class="member-photo"
-          >
-
-          <span class="member-number">02</span>
-
-          <div class="photo-gradient"></div>
-
-          <button class="arrow" aria-label="Lihat profil">
-            ↗
-          </button>
-
-        </div>
-
-        <div class="member-info">
-          <span class="member-role">AI DEVELOPER</span>
-
-          <h3>Adil Khoerussabil</h3>
-
-          <p>Informatics Student</p>
-
-          <div class="member-nim">
-            <span>NIM</span>
-            <strong>267006111068</strong>
-          </div>
-          <br>
-          <div class="instagram">
-              <img src="Instagram_logo_2022.svg.webp" alt="" width="20px">
-              <a href="https://instagram.com/adilkhrsbl" target="_blank">adilkhrsbl</a>
-          </div>
-        </div>
-
-      </article>
-
-      <!-- MEMBER 03 -->
-      <article
-        class="member-card reveal"
+        class="member-card leader reveal"
         data-name="Rian Juliansyah"
-        data-role="Network Engineer"
-        data-bio="Fokus merancang, menegelola, dan mengamankan infrastruktur jaringan."
-        data-skills="TCP/IP, Routing & Switching, Network Security, Cisco, Wireshark"
+        data-role="Ketua Kelompok"
       >
 
         <div class="member-photo-wrap">
@@ -488,14 +358,10 @@ Infinite possibilities.
 
           <div class="photo-gradient"></div>
 
-          <button class="arrow" aria-label="Lihat profil">
-            ↗
-          </button>
-
         </div>
 
         <div class="member-info">
-          <span class="member-role">NETWORK ENGINEER</span>
+          <span class="member-role">KETUA KELOMPOK</span>
 
           <h3>Rian Juliansyah</h3>
 
@@ -514,13 +380,94 @@ Infinite possibilities.
 
       </article>
 
+      <!-- MEMBER 02 -->
+      <article
+        class="member-card reveal"
+        data-name="Rifat Abdul Manaf"
+      >
+
+        <div class="member-photo-wrap">
+          <!-- Ganti dengan foto anggota -->
+          <img
+            src="img/aing.png"
+            alt="Rifat Abdul Manaf"
+            class="member-photo"
+          >
+
+          <span class="member-number">02</span>
+
+          <div class="photo-gradient"></div>
+
+        </div>
+
+        <div class="member-info">
+          <span class="member-role">ANGGOTA</span>
+
+          <h3>Rifat Abdul Manaf</h3>
+
+          <p>Informatics Student</p>
+
+          <div class="member-nim">
+            <span>NIM</span>
+            <strong>267006111199</strong>
+          </div>
+          <br>
+          <div class="instagram">
+              <img src="Instagram_logo_2022.svg.webp" alt="" width="20px">
+              <a href="https://instagram.com/p1sc00k_" target="_blank">p1sc00k_</a>
+          </div>
+          
+        </div>
+        
+      </article>
+
+
+      <!-- MEMBER 03 -->
+      <article
+        class="member-card reveal"
+        data-name="Adil Khoerussabil"
+      >
+
+        <div class="member-photo-wrap">
+
+          <img
+            src="img/Adil.jpg"
+            alt="Adil Khoerussabil"
+            class="member-photo"
+          >
+
+          <span class="member-number">03</span>
+
+          <div class="photo-gradient"></div>
+
+        </div>
+
+        <div class="member-info">
+          <span class="member-role">ANGGOTA</span>
+
+          <h3>Adil Khoerussabil</h3>
+
+          <p>Informatics Student</p>
+
+          <div class="member-nim">
+            <span>NIM</span>
+            <strong>267006111068</strong>
+          </div>
+          <br>
+          <div class="instagram">
+              <img src="Instagram_logo_2022.svg.webp" alt="" width="20px">
+              <a href="https://instagram.com/adilkhrsbl" target="_blank">adilkhrsbl</a>
+          </div>
+        </div>
+
+      </article>
+
+
       <!-- MEMBER 04 -->
       <article
         class="member-card reveal"
         data-name="Syafiq Al Ghifari Jhon Tesa"
-        data-role="Frontend Developer"
-        data-bio="Suka membangun antarmuka web yang modern, cepat, dan mudah digunakan."
-        data-skills="HTML,CSS,JavaScript,UI Design"
+        
       >
 
         <div class="member-photo-wrap">
@@ -535,14 +482,10 @@ Infinite possibilities.
 
           <div class="photo-gradient"></div>
 
-          <button class="arrow" aria-label="Lihat profil">
-            ↗
-          </button>
-
         </div>
 
         <div class="member-info">
-          <span class="member-role">FRONTEND DEVELOPER</span>
+          <span class="member-role">ANGGOTA</span>
 
           <h3>Syafiq Al Ghifari Jhon Tesa</h3>
 
@@ -565,9 +508,6 @@ Infinite possibilities.
       <article
         class="member-card reveal"
         data-name="Rofi Taufiqurrahman"
-        data-role="Cyber Security"
-        data-bio="Melindungi sistem, jaringan, program, dan data dari serangan digital (cyber attack)."
-        data-skills="Keamanan jaringan, firewall, enkripsi, dan manajemen akses."
       >
 
         <div class="member-photo-wrap">
@@ -582,14 +522,10 @@ Infinite possibilities.
 
           <div class="photo-gradient"></div>
 
-          <button class="arrow" aria-label="Lihat profil">
-            ↗
-          </button>
-
         </div>
 
         <div class="member-info">
-          <span class="member-role">CYBER SECURITY</span>
+          <span class="member-role">ANGGOTA</span>
 
           <h3>Rofi Taufiqurrahman</h3>
 
@@ -612,9 +548,6 @@ Infinite possibilities.
       <article
         class="member-card reveal"
         data-name="Alfi Hiyarrunnisa"
-        data-role="UI/UX Designer"
-        data-bio="Fokus pada desain visual, pengalaman pengguna, dan bagaimana membuat produk terasa sederhana."
-        data-skills="UI/UX,Figma,Branding,Research"
       >
 
         <div class="member-photo-wrap">
@@ -629,14 +562,10 @@ Infinite possibilities.
 
           <div class="photo-gradient"></div>
 
-          <button class="arrow" aria-label="Lihat profil">
-            ↗
-          </button>
-
         </div>
 
         <div class="member-info">
-          <span class="member-role">UI/UX DESIGNER</span>
+          <span class="member-role">ANGGOTA</span>
 
           <h3>Alfi Hiyarrunnisa</h3>
 
@@ -648,7 +577,7 @@ Infinite possibilities.
           </div>
           <br>
           <div class="instagram">
-              <img src="Instagram_logo_2022.svg.webp" alt="" width="20px"">
+              <img src="Instagram_logo_2022.svg.webp" alt="" width="20px">
               <a href="https://instagram.com/alfie.wls" target="_blank">alfie.wls</a>
           </div>
         </div>
@@ -659,9 +588,6 @@ Infinite possibilities.
       <article
         class="member-card reveal"
         data-name="Naiela Dewi Zahra"
-        data-role="UI/UX Designer"
-        data-bio="Fokus pada desain visual, pengalaman pengguna, dan bagaimana membuat produk terasa sederhana."
-        data-skills="UI/UX,Figma,Branding,Research"
       >
 
         <div class="member-photo-wrap">
@@ -676,14 +602,10 @@ Infinite possibilities.
 
           <div class="photo-gradient"></div>
 
-          <button class="arrow" aria-label="Lihat profil">
-            ↗
-          </button>
-
         </div>
 
         <div class="member-info">
-          <span class="member-role">UI/UX DESIGNER</span>
+          <span class="member-role">ANGGOTA</span>
 
           <h3>Naiela Dewi Zahra</h3>
 
@@ -706,9 +628,6 @@ Infinite possibilities.
       <article
         class="member-card reveal"
         data-name="Aliya Zahra"
-        data-role="UI/UX Designer"
-        data-bio="Fokus pada desain visual, pengalaman pengguna, dan bagaimana membuat produk terasa sederhana."
-        data-skills="UI/UX,Figma,Branding,Research"
       >
 
         <div class="member-photo-wrap">
@@ -723,14 +642,10 @@ Infinite possibilities.
 
           <div class="photo-gradient"></div>
 
-          <button class="arrow" aria-label="Lihat profil">
-            ↗
-          </button>
-
         </div>
 
         <div class="member-info">
-          <span class="member-role">UI/UX DESIGNER</span>
+          <span class="member-role">ANGGOTA</span>
 
           <h3>Aliya Zahra</h3>
 
@@ -754,9 +669,6 @@ Infinite possibilities.
       <article
         class="member-card reveal"
         data-name="Azril Riyanto Valentino"
-        data-role="UI/UX Designer"
-        data-bio="Fokus pada desain visual, pengalaman pengguna, dan bagaimana membuat produk terasa sederhana."
-        data-skills="UI/UX,Figma,Branding,Research"
       >
 
         <div class="member-photo-wrap">
@@ -771,14 +683,10 @@ Infinite possibilities.
 
           <div class="photo-gradient"></div>
 
-          <button class="arrow" aria-label="Lihat profil">
-            ↗
-          </button>
-
         </div>
 
         <div class="member-info">
-          <span class="member-role">UI/UX DESIGNER</span>
+          <span class="member-role">ANGGOTA</span>
 
           <h3>Azril Riyanto Valentino</h3>
 
@@ -801,9 +709,6 @@ Infinite possibilities.
       <article
         class="member-card reveal"
         data-name="Nazmul Mustofa"
-        data-role="Backend Developer"
-        data-bio="Senang mengolah logika aplikasi, database, dan sistem yang menjadi fondasi sebuah produk."
-        data-skills="Python,Database,API,Problem Solving"
       >
 
         <div class="member-photo-wrap">
@@ -818,14 +723,10 @@ Infinite possibilities.
 
           <div class="photo-gradient"></div>
 
-          <button class="arrow" aria-label="Lihat profil">
-            ↗
-          </button>
-
         </div>
 
         <div class="member-info">
-          <span class="member-role">BACKEND DEVELOPER</span>
+          <span class="member-role">ANGGOTA</span>
 
           <h3>Nazmul Mustofa</h3>
 
@@ -848,9 +749,6 @@ Infinite possibilities.
       <article
         class="member-card reveal"
         data-name="Dwimas Miftahurizqi"
-        data-role="Backend Developer"
-        data-bio="Senang mengolah logika aplikasi, database, dan sistem yang menjadi fondasi sebuah produk."
-        data-skills="Python,Database,API,Problem Solving"
       >
 
         <div class="member-photo-wrap">
@@ -865,14 +763,10 @@ Infinite possibilities.
 
           <div class="photo-gradient"></div>
 
-          <button class="arrow" aria-label="Lihat profil">
-            ↗
-          </button>
-
         </div>
 
         <div class="member-info">
-          <span class="member-role">BACKEND DEVELOPER</span>
+          <span class="member-role">ANGGOTA</span>
 
           <h3>Dwimas Miftahurizqi</h3>
 
@@ -896,61 +790,45 @@ Infinite possibilities.
 
 </section>
 
-<section class="comments-section reveal" id="pesan">
-    
-    <!-- PERBAIKAN: Memaksa tata letak menjadi blok agar teks merapat ke kiri -->
-    <div class="comments-header" style="display: block; margin-bottom: 50px;">
-        <p class="eyebrow">05 / YOUR THOUGHTS</p>
+<!-- COMMENTS -->
+<section class="comments-section reveal" id="comment">
+    <div class="comments-header">
+        <p class="eyebrow">03 / YOUR MESSAGES</p>
         <h2>Tinggalkan <span>Pesan & Kesan</span></h2>
-        <p style="margin-top: 15px;">
+        <p>
             Bagikan pesan, kesan, atau apresiasi kamu untuk kelompok kami.
         </p>
     </div>
 
-    <!-- Layout form dan komentar bersebelahan -->
-    <div class="comment-layout">
-        
-        <!-- Bagian Form (Kiri) -->
-        <form class="comment-form" id="commentForm">
-            <div class="input-group">
-                <label for="nama">Nama</label>
-                <input 
-                    type="text" 
-                    id="nama" 
-                    placeholder="Nama Anda" 
-                    required
-                >
-            </div>
-
-            <div class="input-group">
-                <label for="pesan">Pesan & Kesan</label>
-                <textarea 
-                    id="pesan" 
-                    rows="5" 
-                    placeholder="Tulis pesan atau kesan..."
-                    required
-                ></textarea>
-            </div>
-
-            <button type="submit" class="comment-btn">
-                Kirim Pesan
-                <span>↗</span>
-            </button>
-        </form>
-
-        <!-- Bagian Menampilkan Komentar (Kanan) -->
-        <div class="comments-display">
-            <div class="comments-display-head">
-                <span>PESAN TERBARU</span>
-                <span><span id="commentCount">0</span> Pesan</span>
-            </div>
-            
-            <!-- Area komentar dengan custom scrollbar -->
-            <div class="comment-list" id="commentList">
-                <!-- Komentar akan muncul melalui JavaScript di sini -->
-            </div>
+    <form class="comment-form" id="commentForm">
+        <div class="input-group">
+            <label for="nama">Nama</label>
+            <input 
+                type="text" 
+                id="nama" 
+                placeholder="Nama Anda" 
+                required
+            >
         </div>
 
+        <div class="input-group">
+            <label for="pesan">Pesan & Kesan</label>
+            <textarea 
+                id="pesan" 
+                rows="5" 
+                placeholder="Tulis pesan atau kesan..."
+                required
+            ></textarea>
+        </div>
+
+        <button type="submit" class="comment-btn">
+            Kirim Pesan
+            <span>↗</span>
+        </button>
+    </form>
+
+    <div class="comment-list" id="commentList">
+        <!-- Komentar akan muncul melalui JavaScript -->
     </div>
 </section>
 
@@ -958,18 +836,6 @@ Infinite possibilities.
     <span>© 2026 Kelompok 14</span>
     <span>Made with curiosity & collaboration.</span>
   </footer>
-
-  <div class="modal" id="profileModal" aria-hidden="true">
-    <div class="modal-backdrop"></div>
-    <div class="profile-modal">
-      <button class="close" id="closeModal">×</button>
-      <div class="modal-avatar" id="modalAvatar">RA</div>
-      <p class="eyebrow" id="modalRole">CYBER SECURITY</p>
-      <h2 id="modalName">Rifat Abdul Manaf</h2>
-      <p id="modalBio"></p>
-      <div class="skill-list" id="modalSkills"></div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
