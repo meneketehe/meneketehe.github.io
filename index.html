@@ -14,18 +14,47 @@
 <body>
   <div class="noise"></div>
 
-  <header class="navbar">
-    <a href="#home" class="brand">
-      <span class="brand-mark">14</span>
-      <span>Kelompok<span class="accent"> 14</span></span>
-    </a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#team">Team</a>
-      <a href="#pesan">Pesan</a>
-    </nav>
-    <button class="theme-btn" id="themeToggle" aria-label="Ganti tema">◐</button>
-  </header>
+<header class="navbar">
+
+  <a href="#home" class="brand">
+    <span class="brand-mark">14</span>
+    <span>
+      Kelompok<span class="accent"> 14</span>
+    </span>
+  </a>
+
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#team">Team</a>
+    <a href="#pesan">Pesan</a>
+    <a href="#commentList">Komentar</a>
+  </nav>
+
+
+  <div class="nav-actions">
+
+    <button 
+      class="theme-btn" 
+      id="themeToggle">
+      ◐
+    </button>
+
+
+    <button 
+      class="hamburger"
+      id="hamburger">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+  </div>
+
+
+</header>
 
   <main>
     <section class="hero" id="home">
@@ -104,22 +133,42 @@
   <!-- FOTO KELOMPOK -->
   <div class="group-showcase reveal">
 
-    <div class="group-image">
-      <!-- Ganti dengan foto kelompok -->
-      <img src="kelompok.jpeg" alt="Foto Kelompok 14">
+<div class="group-image">
 
-      <div class="image-overlay"></div>
+<div class="slider">
 
-      <div class="group-badge">
-        <span>GROUP</span>
-        <strong>14</strong>
-      </div>
+<img id="groupPhoto" 
+src="kelompok.jpeg" 
+alt="Foto Kelompok 14">
 
-      <div class="group-caption">
-        <span>STUDENT TECH COLLECTIVE</span>
-        <h3>One team.<br>Infinite possibilities.</h3>
-      </div>
-    </div>
+<button class="slide-btn prev" id="prevPhoto">
+←
+</button>
+
+<button class="slide-btn next" id="nextPhoto">
+→
+</button>
+
+</div>
+
+
+<div class="image-overlay"></div>
+
+<div class="group-badge">
+<span>GROUP</span>
+<strong>14</strong>
+</div>
+
+
+<div class="group-caption">
+<span>STUDENT TECH COLLECTIVE</span>
+<h3>
+One team.<br>
+Infinite possibilities.
+</h3>
+</div>
+
+</div>
 
     <div class="group-info">
       <span class="mini-title">OUR CREW</span>
