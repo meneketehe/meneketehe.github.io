@@ -1,32 +1,21 @@
 // =====================================================
-// FIREBASE INITIALIZATION
-// (Harus diletakkan paling atas)
-// =====================================================
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDoGLleNKQ3k_lbTvoOt0hoNFixNuHD74U",
-  authDomain: "kelompok14-5bb0b.firebaseapp.com",
-  projectId: "kelompok14-5bb0b",
-  storageBucket: "kelompok14-5bb0b.firebasestorage.app",
-  messagingSenderId: "974119608507",
-  appId: "1:974119608507:web:3ef3cf8d7d291eca21499e",
-  measurementId: "G-MGBWWLKKEV"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// =====================================================
 // BASIC SELECTOR
 // =====================================================
-const $ = (selector, parent = document) => parent.querySelector(selector); const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
+
+const $ = (selector, parent = document) =>
+  parent.querySelector(selector);
+
+const $$ = (selector, parent = document) =>
+  [...parent.querySelectorAll(selector)];
+
 
 // =====================================================
-// THEME SYSTEM (DEFAULT = DARK MODE)
+// THEME SYSTEM
+// DEFAULT = DARK MODE
 // =====================================================
+
 const themeToggle = $("#themeToggle");
+
 const savedTheme = localStorage.getItem("group31-theme");
 
 // Kalau belum pernah memilih tema → otomatis DARK
@@ -36,312 +25,758 @@ if (!savedTheme || savedTheme === "dark") {
   document.body.classList.remove("dark");
 }
 
+
 // Update icon tombol tema
 function updateThemeIcon() {
-  if(!themeToggle) return;
-  if (document.body.classList.contains("dark")) {
-    themeToggle.textContent = "☾";
-    themeToggle.setAttribute("aria-label", "Aktifkan light mode");
-  } else {
-    themeToggle.textContent = "☀";
-    themeToggle.setAttribute("aria-label", "Aktifkan dark mode");
-  }
-}
-updateThemeIcon();
 
-// Toggle Dark / Light
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    const isDark = document.body.classList.contains("dark");
-    localStorage.setItem("group31-theme", isDark ? "dark" : "light");
-    updateThemeIcon();
-  });
+  if(!themeToggle) return;
+
+
+  if (document.body.classList.contains("dark")) {
+
+    themeToggle.textContent = "☾";
+
+    themeToggle.setAttribute(
+      "aria-label",
+      "Aktifkan light mode"
+    );
+
+  } else {
+
+    themeToggle.textContent = "☀";
+
+    themeToggle.setAttribute(
+      "aria-label",
+      "Aktifkan dark mode"
+    );
+
+  }
+
 }
+
+updateThemeIcon();
 
 // =====================================================
 // MOBILE MENU
 // =====================================================
+
+
 const menuBtn = $("#menuBtn");
+
 const navMenu = $(".navbar nav");
 
+
+
 if(menuBtn && navMenu){
-  menuBtn.addEventListener("click", (e)=>{
-    e.stopPropagation();
-    navMenu.classList.toggle("open");
-  });
 
-  // Klik area menu jangan menutup
-  navMenu.addEventListener("click", (e)=>{
-    e.stopPropagation();
-  });
 
-  // Klik luar menu → close
-  document.addEventListener("click", ()=>{
-    navMenu.classList.remove("open");
+menuBtn.addEventListener(
+"click",
+(e)=>{
+
+e.stopPropagation();
+
+navMenu.classList.toggle("open");
+
+
+});
+
+
+
+// Klik area menu jangan menutup
+
+navMenu.addEventListener(
+"click",
+(e)=>{
+
+e.stopPropagation();
+
+});
+
+
+
+
+// Klik luar menu → close
+
+document.addEventListener(
+"click",
+()=>{
+
+
+navMenu.classList.remove("open");
+
+
+});
+
+
+}
+
+
+// Toggle Dark / Light
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    const isDark =
+      document.body.classList.contains("dark");
+
+    localStorage.setItem(
+      "group31-theme",
+      isDark ? "dark" : "light"
+    );
+
+    updateThemeIcon();
   });
 }
+
 
 // =====================================================
 // REVEAL ANIMATION
 // =====================================================
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
 
-$$(".reveal").forEach((element) => {   observer.observe(element); });  // ===================================================== // COUNTER ANIMATION // ===================================================== const counters = $$
-(".counter");
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    const element = entry.target;
-    const target = Number(element.dataset.target);
-    const duration = 1000;
-    const start = performance.now();
+const observer = new IntersectionObserver(
+  (entries) => {
 
-    function animateCounter(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const value = Math.floor(progress * target);
-      element.textContent = value;
-      if (progress < 1) {
-        requestAnimationFrame(animateCounter);
-      } else {
-        element.textContent = target;
+    entries.forEach((entry) => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("visible");
+
+        observer.unobserve(entry.target);
       }
-    }
-    requestAnimationFrame(animateCounter);
-    counterObserver.unobserve(element);
-  });
-}, { threshold: 0.7 });
+
+    });
+
+  },
+  {
+    threshold: 0.12
+  }
+);
+
+$$(".reveal").forEach((element) => {
+  observer.observe(element);
+});
+
+
+// =====================================================
+// COUNTER ANIMATION
+// =====================================================
+
+const counters = $$(".counter");
+
+const counterObserver = new IntersectionObserver(
+  (entries) => {
+
+    entries.forEach((entry) => {
+
+      if (!entry.isIntersecting) return;
+
+      const element = entry.target;
+
+      const target =
+        Number(element.dataset.target);
+
+      const duration = 1000;
+
+      const start = performance.now();
+
+      function animateCounter(now) {
+
+        const progress = Math.min(
+          (now - start) / duration,
+          1
+        );
+
+        const value =
+          Math.floor(progress * target);
+
+        element.textContent = value;
+
+        if (progress < 1) {
+          requestAnimationFrame(animateCounter);
+        } else {
+          element.textContent = target;
+        }
+      }
+
+      requestAnimationFrame(animateCounter);
+
+      counterObserver.unobserve(element);
+    });
+
+  },
+  {
+    threshold: 0.7
+  }
+);
 
 counters.forEach((counter) => {
   counterObserver.observe(counter);
 });
 
+
 // =====================================================
-// PESAN & KESAN (FIREBASE REAL-TIME)
+// PROFILE MODAL
 // =====================================================
-const commentForm = $("#commentForm");
-const commentsContainer = $("#commentList");
-const commentCount = $("#commentCount");
+
+
+// =====================================================
+// PESAN & KESAN
+// =====================================================
+
+const commentForm =
+  $("#commentForm");
+
+// PERBAIKAN: Ubah commentsContainer agar sesuai dengan ID di index.html
+const commentsContainer =
+  $("#commentList");
+
+const commentCount =
+  $("#commentCount");
+
+// Key LocalStorage
+const COMMENT_STORAGE =
+  "group31-comments";
 
 // Escape HTML
 function escapeHTML(text) {
-  const div = document.createElement("div");
+  const div =
+    document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
 }
 
 // Format waktu
-function formatTime(dateString) {
-  return new Date(dateString).toLocaleString("id-ID", {
-    dateStyle: "medium",
-    timeStyle: "short"
-  });
+function formatTime(date) {
+  return new Date(date).toLocaleString(
+    "id-ID",
+    {
+      dateStyle: "medium",
+      timeStyle: "short"
+    }
+  );
 }
+
+// =====================================================
+// LOAD COMMENTS
+// =====================================================
 
 function loadComments() {
   if (!commentsContainer) return;
 
-  const q = query(collection(db, "comments"), orderBy("waktu", "desc"));
+  let comments = [];
+  try {
+    comments =
+      JSON.parse(
+        localStorage.getItem(
+          COMMENT_STORAGE
+        )
+      ) || [];
+  } catch (error) {
+    comments = [];
+  }
 
-  // onSnapshot akan menarik data otomatis ketika ada komentar masuk
-  onSnapshot(q, (snapshot) => {
-    const comments = [];
-    snapshot.forEach((doc) => {
-      comments.push(doc.data());
-    });
+  // Update jumlah komentar (Jika elemen ada)
+  if (commentCount) {
+    commentCount.textContent =
+      comments.length;
+  }
 
-    if (commentCount) {
-      commentCount.textContent = comments.length;
-    }
+  // Belum ada komentar
+  if (comments.length === 0) {
+    commentsContainer.innerHTML = `
+      <div class="empty-comments">
+        <span>✦</span>
+        <p>Belum ada pesan.</p>
+        <small>
+          Jadilah yang pertama meninggalkan pesan.
+        </small>
+      </div>
+    `;
+    return;
+  }
 
-    if (comments.length === 0) {
-      commentsContainer.innerHTML = `
-        <div class="empty-comments">
-          <span>✦</span>
-          <p>Belum ada pesan.</p>
-          <small>Jadilah yang pertama meninggalkan pesan.</small>
-        </div>
-      `;
-      return;
-    }
+  // Bersihkan container
+  commentsContainer.innerHTML = "";
 
-    commentsContainer.innerHTML = "";
+  // Tampilkan komentar
+  comments.forEach((comment) => {
+    const commentItem =
+      document.createElement("div");
+    commentItem.className =
+      "comment-item";
 
-    comments.forEach((comment) => {
-      const commentItem = document.createElement("div");
-      commentItem.className = "comment-item";
+    const name =
+      escapeHTML(comment.nama);
 
-      const name = escapeHTML(comment.nama);
-      const message = escapeHTML(comment.pesan);
-      const time = comment.waktu ? formatTime(comment.waktu) : "";
+    const message =
+      escapeHTML(comment.pesan);
 
-      commentItem.innerHTML = `
-        <strong>${name}</strong>
-        <p>${message}</p>
-        ${time ? `<small>${time}</small>` : ""}
-      `;
-      commentsContainer.appendChild(commentItem);
-    });
+    const time =
+      comment.waktu
+        ? formatTime(comment.waktu)
+        : "";
+
+    commentItem.innerHTML = `
+      <strong>${name}</strong>
+      <p>${message}</p>
+      ${time
+        ? `<small>${time}</small>`
+        : ""
+      }
+    `;
+
+    commentsContainer.appendChild(
+      commentItem
+    );
   });
 }
 
+// =====================================================
+// SUBMIT COMMENT
+// =====================================================
+
 if (commentForm) {
-  commentForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  commentForm.addEventListener(
+    "submit",
+    (event) => {
+      event.preventDefault();
 
-    const nameInput = $("#nama");
-    const textInput = $("#pesan");
-    const submitBtn = $(".comment-btn"); // Memilih tombol kirim
+      // PERBAIKAN: Ubah selector untuk nama dan pesan agar sesuai dengan ID di index.html
+      const nameInput =
+        $("#nama");
 
-    if (!nameInput || !textInput) return;
+      const textInput =
+        $("#pesan");
 
-    const nama = nameInput.value.trim();
-    const pesan = textInput.value.trim();
+      if (!nameInput || !textInput) {
+        return;
+      }
 
-    if (!nama || !pesan) return;
+      const nama =
+        nameInput.value.trim();
 
-    // Ubah status tombol saat mengirim
-    const originalBtnText = submitBtn.innerHTML;
-    submitBtn.innerHTML = "Mengirim... <span>⏳</span>";
-    submitBtn.disabled = true;
+      const pesan =
+        textInput.value.trim();
 
-    try {
-      // Menyimpan data ke Firebase
-      await addDoc(collection(db, "comments"), {
+      // Validasi
+      if (!nama || !pesan) {
+        return;
+      }
+
+      let comments = [];
+      try {
+        comments =
+          JSON.parse(
+            localStorage.getItem(
+              COMMENT_STORAGE
+            )
+          ) || [];
+      } catch (error) {
+        comments = [];
+      }
+
+      // Tambahkan komentar terbaru
+      comments.unshift({
         nama: nama,
         pesan: pesan,
-        waktu: new Date().toISOString()
+        waktu: new Date().toISOString(),
+        likes:0
       });
-      // Kosongkan form setelah sukses
+
+      // Simpan
+      localStorage.setItem(
+        COMMENT_STORAGE,
+        JSON.stringify(comments)
+      );
+
+      // Reset form
       commentForm.reset();
-    } catch (error) {
-      console.error("Error adding document: ", error);
-      alert("Gagal mengirim pesan. Pastikan koneksi internet lancar.");
-    } finally {
-      // Kembalikan tombol seperti semula
-      submitBtn.innerHTML = originalBtnText;
-      submitBtn.disabled = false;
+
+      // Refresh komentar
+      loadComments();
     }
-  });
+  );
 }
 
 // =====================================================
 // GROUP PHOTO SLIDER
+// AUTO + MANUAL DESKTOP + SWIPE MOBILE
 // =====================================================
+
+
 const photos=[
-  "img/mentoring/day1.jpeg",
-  "img/mentoring/day2.jpeg",
-  "img/mentoring/day3.jpeg",
-  "img/mentoring/day4.jpeg"
+
+"img/mentoring/day1.jpeg",
+"img/mentoring/day2.jpeg",
+"img/mentoring/day3.jpeg",
+"img/mentoring/day4.jpeg"
+
 ];
 
-const comingSoon = $("#comingSoon");
-let currentPhoto = 0;
+
 const groupPhoto = $("#groupPhoto");
-const dayLabel = $("#dayLabel");
-const photoCount = $("#photoCount");
+
+
+let currentPhoto = 0;
+
+
 
 function changePhoto(){
-  if(!groupPhoto) return;
-  
-  groupPhoto.style.opacity="0";
-  
-  setTimeout(()=>{
-    groupPhoto.src = photos[currentPhoto];
-    
-    // tampilkan coming soon hanya foto terakhir
-    if(comingSoon){
-      if(currentPhoto === photos.length - 1){
-        comingSoon.style.display="block";
-      } else {
-        comingSoon.style.display="none";
-      }
-    }
-    
-    if(dayLabel) dayLabel.textContent = "DAY 0"+(currentPhoto+1);
-    if(photoCount) photoCount.textContent = `${currentPhoto+1} / ${photos.length}`;
-    
-    groupPhoto.style.opacity="1";
-  }, 200);
+
+
+if(!groupPhoto) return;
+
+
+groupPhoto.style.opacity="0";
+
+
+setTimeout(()=>{
+
+
+groupPhoto.src =
+photos[currentPhoto];
+
+
+groupPhoto.style.opacity="1";
+
+
+},200);
+
+
 }
 
-const nextPhoto = $("#nextPhoto");
-const prevPhoto = $("#prevPhoto");
+
+
+// =========================
+// NEXT BUTTON
+// =========================
+
+const nextPhoto=$("#nextPhoto");
+
 
 if(nextPhoto){
-  nextPhoto.addEventListener("click", ()=>{
-    currentPhoto++;
-    if(currentPhoto >= photos.length){
-      currentPhoto = 0;
-    }
-    changePhoto();
-  });
+
+nextPhoto.addEventListener(
+"click",
+()=>{
+
+
+currentPhoto++;
+
+
+if(currentPhoto >= photos.length){
+
+currentPhoto=0;
+
 }
+
+
+changePhoto();
+
+resetAutoSlide();
+
+
+});
+
+}
+
+
+
+
+// =========================
+// PREVIOUS BUTTON
+// =========================
+
+const prevPhoto=$("#prevPhoto");
+
 
 if(prevPhoto){
-  prevPhoto.addEventListener("click", ()=>{
-    currentPhoto--;
-    if(currentPhoto < 0){
-      currentPhoto = photos.length - 1;
-    }
-    changePhoto();
-  });
+
+prevPhoto.addEventListener(
+"click",
+()=>{
+
+
+currentPhoto--;
+
+
+if(currentPhoto < 0){
+
+currentPhoto =
+photos.length-1;
+
 }
 
+
+changePhoto();
+
+resetAutoSlide();
+
+
+});
+
+}
+
+
+
+
+// =========================
+// AUTO SLIDE
+// =========================
+
+
+let autoSlide;
+
+
+function startAutoSlide(){
+
+
+autoSlide=setInterval(()=>{
+
+
+currentPhoto++;
+
+
+if(currentPhoto >= photos.length){
+
+currentPhoto=0;
+
+}
+
+
+changePhoto();
+
+
+},4000);
+
+
+}
+
+
+
+function resetAutoSlide(){
+
+clearInterval(autoSlide);
+
+startAutoSlide();
+
+}
+
+
+
+startAutoSlide();
+
+
+
+
+// =========================
+// MOBILE SWIPE
+// =========================
+
+
+let startX=0;
+
+
+groupPhoto.addEventListener(
+"touchstart",
+(e)=>{
+
+startX=e.touches[0].clientX;
+
+}
+
+);
+
+
+
+groupPhoto.addEventListener(
+"touchend",
+(e)=>{
+
+
+let endX=e.changedTouches[0].clientX;
+
+
+let distance=startX-endX;
+
+
+
+if(distance > 50){
+
+
+currentPhoto++;
+
+
+if(currentPhoto >= photos.length){
+
+currentPhoto=0;
+
+}
+
+
+changePhoto();
+
+resetAutoSlide();
+
+
+}
+
+
+
+if(distance < -50){
+
+
+currentPhoto--;
+
+
+if(currentPhoto < 0){
+
+currentPhoto=photos.length-1;
+
+}
+
+
+changePhoto();
+
+resetAutoSlide();
+
+
+}
+
+
+
+}
+
+);
+
 // =====================================================
-// NAVBAR ACTIVE & INITIAL LOAD
+// INITIAL LOAD
 // =====================================================
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".navbar nav a");
+
+// =====================================================
+// NAVBAR ACTIVE
+// =====================================================
+
+const sections =
+document.querySelectorAll("section[id]");
+
+const navLinks =
+document.querySelectorAll(".navbar nav a");
+
+
 let isClickScrolling = false;
 
+
+
 function updateActiveNav(){
-  if(isClickScrolling) return;
-  
-  let current="";
-  sections.forEach(section=>{
-    const sectionTop = section.offsetTop - 180;
-    if(scrollY >= sectionTop){
-      current = section.id;
-    }
-  });
-  
-  navLinks.forEach(link=>{
-    link.classList.remove("active");
-    if(link.getAttribute("href") === "#"+current){
-      link.classList.add("active");
-    }
-  });
+
+if(isClickScrolling) return;
+
+
+let current="";
+
+
+sections.forEach(section=>{
+
+
+const sectionTop =
+section.offsetTop - 180;
+
+
+if(scrollY >= sectionTop){
+
+current = section.id;
+
 }
 
-navLinks.forEach(link=>{
-  link.addEventListener("click", ()=>{
-    isClickScrolling=true;
-    navLinks.forEach(item=>{
-      item.classList.remove("active");
-    });
-    link.classList.add("active");
-    setTimeout(()=>{
-      isClickScrolling=false;
-    }, 1500);
-  });
+
 });
 
-window.addEventListener("scroll", updateActiveNav);
+
 
 navLinks.forEach(link=>{
-  link.addEventListener("click", ()=>{
-    navMenu?.classList.remove("open");
-  });
+
+
+link.classList.remove("active");
+
+
+if(
+link.getAttribute("href")
+===
+"#"+current
+){
+
+link.classList.add("active");
+
+}
+
+
 });
 
-// Jalankan Fungsi
+
+}
+
+
+
+navLinks.forEach(link=>{
+
+
+link.addEventListener(
+"click",
+()=>{
+
+
+isClickScrolling=true;
+
+
+
+navLinks.forEach(item=>{
+item.classList.remove("active");
+});
+
+
+
+link.classList.add("active");
+
+
+
+setTimeout(()=>{
+
+isClickScrolling=false;
+
+},1500);
+
+
+
+});
+
+
+});
+
+
+
+window.addEventListener(
+"scroll",
+updateActiveNav
+);
+
+navLinks.forEach(link=>{
+
+link.addEventListener(
+"click",
+()=>{
+
+navMenu?.classList.remove("open");
+
+});
+
+});
+
+
 updateActiveNav();
+
+
 loadComments();
