@@ -28,22 +28,88 @@ if (!savedTheme || savedTheme === "dark") {
 
 // Update icon tombol tema
 function updateThemeIcon() {
+
+  if(!themeToggle) return;
+
+
   if (document.body.classList.contains("dark")) {
+
     themeToggle.textContent = "☾";
+
     themeToggle.setAttribute(
       "aria-label",
       "Aktifkan light mode"
     );
+
   } else {
+
     themeToggle.textContent = "☀";
+
     themeToggle.setAttribute(
       "aria-label",
       "Aktifkan dark mode"
     );
+
   }
+
 }
 
 updateThemeIcon();
+
+// =====================================================
+// MOBILE MENU
+// =====================================================
+
+
+const menuBtn = $("#menuBtn");
+
+const navMenu = $(".navbar nav");
+
+
+
+if(menuBtn && navMenu){
+
+
+menuBtn.addEventListener(
+"click",
+(e)=>{
+
+e.stopPropagation();
+
+navMenu.classList.toggle("open");
+
+
+});
+
+
+
+// Klik area menu jangan menutup
+
+navMenu.addEventListener(
+"click",
+(e)=>{
+
+e.stopPropagation();
+
+});
+
+
+
+
+// Klik luar menu → close
+
+document.addEventListener(
+"click",
+()=>{
+
+
+navMenu.classList.remove("open");
+
+
+});
+
+
+}
 
 
 // Toggle Dark / Light
@@ -154,139 +220,6 @@ counters.forEach((counter) => {
 // =====================================================
 // PROFILE MODAL
 // =====================================================
-
-const modal = $("#profileModal");
-const modalName = $("#modalName");
-const modalRole = $("#modalRole");
-const modalBio = $("#modalBio");
-const modalSkills = $("#modalSkills");
-const modalAvatar = $("#modalAvatar");
-const closeModalButton = $("#closeModal");
-const modalBackdrop = $(".modal-backdrop");
-
-
-function openProfile(card) {
-
-  const name = card.dataset.name || "Unknown";
-  const role = card.dataset.role || "Member";
-  const bio = card.dataset.bio || "";
-  const skills = card.dataset.skills || "";
-
-
-  // Nama
-  modalName.textContent = name;
-
-
-  // Role
-  modalRole.textContent =
-    role.toUpperCase();
-
-
-  // Bio
-  modalBio.textContent = bio;
-
-
-  // Bersihkan skill lama
-  modalSkills.innerHTML = "";
-
-
-  // Tambahkan skill
-  skills
-    .split(",")
-    .filter(Boolean)
-    .forEach((skill) => {
-
-      const span =
-        document.createElement("span");
-
-      span.textContent =
-        skill.trim();
-
-      modalSkills.appendChild(span);
-    });
-
-
-  // Inisial nama
-  const initials = name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((word) => word[0])
-    .join("")
-    .toUpperCase();
-
-  modalAvatar.textContent =
-    initials || "??";
-
-
-  // Buka modal
-  modal.classList.add("open");
-
-  modal.setAttribute(
-    "aria-hidden",
-    "false"
-  );
-
-  document.body.style.overflow = "hidden";
-}
-
-
-function closeProfile() {
-
-  modal.classList.remove("open");
-
-  modal.setAttribute(
-    "aria-hidden",
-    "true"
-  );
-
-  document.body.style.overflow = "";
-}
-
-
-// Klik kartu anggota
-$$(".member-card").forEach((card) => {
-
-  card.addEventListener("click", (event) => {
-
-    // Kalau yang diklik adalah tombol arrow,
-    // tetap buka modal.
-    openProfile(card);
-
-  });
-
-});
-
-
-// Tombol close
-if (closeModalButton) {
-  closeModalButton.addEventListener(
-    "click",
-    closeProfile
-  );
-}
-
-
-// Klik background modal
-if (modalBackdrop) {
-  modalBackdrop.addEventListener(
-    "click",
-    closeProfile
-  );
-}
-
-
-// Tombol ESC
-document.addEventListener(
-  "keydown",
-  (event) => {
-
-    if (event.key === "Escape") {
-      closeProfile();
-    }
-
-  }
-);
 
 
 // =====================================================
@@ -449,7 +382,8 @@ if (commentForm) {
       comments.unshift({
         nama: nama,
         pesan: pesan,
-        waktu: new Date().toISOString()
+        waktu: new Date().toISOString(),
+        likes:0
       });
 
       // Simpan
@@ -468,56 +402,116 @@ if (commentForm) {
 }
 
 // =====================================================
-// INITIAL LOAD
+// GROUP PHOTO SLIDER
 // =====================================================
 
-loadComments();
 
-// ================================
-// GROUP PHOTO SLIDER
-// ================================
+const photos=[
 
-const photos = [
-  "kelompok.jpeg",
-  "kelompok2.jpeg",
-  "kelompok3.jpeg"
+"img/mentoring/day1.jpeg",
+
+"img/mentoring/day2.jpeg",
+
+"img/mentoring/day3.jpeg",
+
+"img/mentoring/day4.jpeg"
+
 ];
 
-
-let currentPhoto = 0;
-
-
-const groupPhoto = $("#groupPhoto");
-const nextPhoto = $("#nextPhoto");
-const prevPhoto = $("#prevPhoto");
+const comingSoon =
+$("#comingSoon");
 
 
-function changePhoto(index){
-
- currentPhoto = index;
-
- if(currentPhoto >= photos.length){
-   currentPhoto = 0;
- }
-
- if(currentPhoto < 0){
-   currentPhoto = photos.length - 1;
- }
+let currentPhoto=0;
 
 
- groupPhoto.src = photos[currentPhoto];
+const groupPhoto =
+$("#groupPhoto");
+
+
+const dayLabel =
+$("#dayLabel");
+
+
+const photoCount =
+$("#photoCount");
+
+
+
+function changePhoto(){
+
+if(!groupPhoto) return;
+
+
+groupPhoto.style.opacity="0";
+
+
+setTimeout(()=>{
+
+
+groupPhoto.src =
+photos[currentPhoto];
+
+
+// tampilkan coming soon hanya foto terakhir
+
+if(comingSoon){
+
+if(currentPhoto === photos.length - 1){
+
+comingSoon.style.display="block";
+
+}else{
+
+comingSoon.style.display="none";
+
+}
+
+}
+
+
+dayLabel.textContent =
+"DAY 0"+(currentPhoto+1);
+
+
+photoCount.textContent =
+`${currentPhoto+1} / ${photos.length}`;
+
+
+groupPhoto.style.opacity="1";
+
+
+},200);
 
 }
 
 
 
+const nextPhoto = $("#nextPhoto");
+const prevPhoto = $("#prevPhoto");
+
+
 if(nextPhoto){
 
- nextPhoto.addEventListener(
- "click",
- ()=>{
-   changePhoto(currentPhoto + 1);
- });
+nextPhoto.addEventListener(
+"click",
+()=>{
+
+
+currentPhoto++;
+
+
+if(currentPhoto >= photos.length){
+
+currentPhoto = 0;
+
+}
+
+
+changePhoto();
+
+
+});
 
 }
 
@@ -525,30 +519,153 @@ if(nextPhoto){
 
 if(prevPhoto){
 
- prevPhoto.addEventListener(
- "click",
- ()=>{
-   changePhoto(currentPhoto - 1);
- });
+prevPhoto.addEventListener(
+"click",
+()=>{
+
+
+currentPhoto--;
+
+
+if(currentPhoto < 0){
+
+currentPhoto = photos.length - 1;
 
 }
 
-// ================================
-// HAMBURGER MENU
-// ================================
 
-const hamburger = $("#hamburger");
-const navMenu = $("#navMenu");
+changePhoto();
 
 
-if (hamburger && navMenu) {
-
-  hamburger.addEventListener("click", () => {
-
-    navMenu.classList.toggle("active");
-
-    hamburger.classList.toggle("open");
-
-  });
+});
 
 }
+
+// =====================================================
+// INITIAL LOAD
+// =====================================================
+
+// =====================================================
+// NAVBAR ACTIVE
+// =====================================================
+
+const sections =
+document.querySelectorAll("section[id]");
+
+const navLinks =
+document.querySelectorAll(".navbar nav a");
+
+
+let isClickScrolling = false;
+
+
+
+function updateActiveNav(){
+
+if(isClickScrolling) return;
+
+
+let current="";
+
+
+sections.forEach(section=>{
+
+
+const sectionTop =
+section.offsetTop - 180;
+
+
+if(scrollY >= sectionTop){
+
+current = section.id;
+
+}
+
+
+});
+
+
+
+navLinks.forEach(link=>{
+
+
+link.classList.remove("active");
+
+
+if(
+link.getAttribute("href")
+===
+"#"+current
+){
+
+link.classList.add("active");
+
+}
+
+
+});
+
+
+}
+
+
+
+navLinks.forEach(link=>{
+
+
+link.addEventListener(
+"click",
+()=>{
+
+
+isClickScrolling=true;
+
+
+
+navLinks.forEach(item=>{
+item.classList.remove("active");
+});
+
+
+
+link.classList.add("active");
+
+
+
+setTimeout(()=>{
+
+isClickScrolling=false;
+
+},1500);
+
+
+
+});
+
+
+});
+
+
+
+window.addEventListener(
+"scroll",
+updateActiveNav
+);
+
+navLinks.forEach(link=>{
+
+link.addEventListener(
+"click",
+()=>{
+
+navMenu?.classList.remove("open");
+
+});
+
+});
+
+
+updateActiveNav();
+
+
+loadComments();
