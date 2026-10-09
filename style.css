@@ -2693,4 +2693,64 @@ body:not(.dark) .hamburger span{
 background:black;
 
 }
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+
+@media(max-width:900px){
+
+
+.navbar nav {
+
+
+position:absolute;
+
+top:76px;
+
+left:0;
+
+right:0;
+
+
+display:none;
+
+
+flex-direction:column;
+
+
+padding:30px;
+
+
+background:var(--bg);
+
+
+border-bottom:1px solid var(--border);
+
+
+}
+
+
+
+.navbar nav.active{
+
+
+display:flex;
+
+
+}
+
+
+
+.hamburger{
+
+
+display:flex;
+
+
+}
+
+
+}
 }
