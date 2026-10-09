@@ -532,3 +532,23 @@ if(prevPhoto){
  });
 
 }
+
+// ================================
+// HAMBURGER MENU
+// ================================
+
+const hamburger = $("#hamburger");
+const navMenu = $("#navMenu");
+
+
+if (hamburger && navMenu) {
+
+  hamburger.addEventListener("click", () => {
+
+    navMenu.classList.toggle("active");
+
+    hamburger.classList.toggle("open");
+
+  });
+
+}
